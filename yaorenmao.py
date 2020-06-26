@@ -50,6 +50,7 @@ def options():
     print(colored.red("""[05] - [+] Proxy Download """))
     print(colored.red("""[06] - [+] Layer 7 Attack """))
     print(colored.red("""[07] - [+] SubDomain Finder """))
+    print(colored.red("""[08] - [+] WAF Checker """))
     print(colored.red("""[99] - [+] Exit """))
     print(colored.magenta(my_string.center(50,"-")))
 
