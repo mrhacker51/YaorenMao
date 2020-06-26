@@ -4,7 +4,20 @@ from bs4 import BeautifulSoup
 from clint.textui import colored
 import sys
 import os
+import time
 
+
+# Selenium Library
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
+
+
+
+## Selenium Clientless Options
+# selenium_options =   Options()
+# selenium_options.headless = True
+driver_path = "/opt/yaorenmao/geckodriver"
 
 ## Banners import 
 from Banners import start_banner
@@ -24,24 +37,32 @@ from Banners import layer_seven_banner
 # banner_proxy = proxy_banner.banner__proxy() ## Proxy Banner
 # banner_layer_seven = layer_seven_banner.banner__layer_seven() ## Layer 7 Banner
 
+
+
+## Menü Options : 
 def options():
     my_string = ""
     print(colored.magenta(my_string.center(50,"-")))
-    print(colored.red("""[01] - Whois Lookup """))
-    print(colored.red("""[02] - NameServer Lookup """))
-    print(colored.red("""[03] - Traceroute Lookup """))
-    print(colored.red("""[04] - Fake Nmap İp & Mac Address Scanner Website """))
-    print(colored.red("""[05] - Proxy Download """))
-    print(colored.red("""[06] - Layer 7 Attack """))
-    print(colored.red("""[99] - Exit """))
+    print(colored.red("""[01] - [+] Whois Lookup """))
+    print(colored.red("""[02] - [+] NameServer Lookup """))
+    print(colored.red("""[03] - [+] Traceroute Lookup """))
+    print(colored.red("""[04] - [+] Fake Nmap İp & Mac Address Scanner Website """))
+    print(colored.red("""[05] - [+] Proxy Download """))
+    print(colored.red("""[06] - [+] Layer 7 Attack """))
+    print(colored.red("""[07] - [+] SubDomain Finder """))
+    print(colored.red("""[99] - [+] Exit """))
     print(colored.magenta(my_string.center(50,"-")))
 
 
-
+## Proxy Menü Options : 
 def options_proxy():
-    print(colored.red("""[1] - ProxyScrape Website All """))
+    print(colored.red("""[1] - [+] ProxyScrape Website All """))
+    print(colored.red("""[2] - [+] Free-Proxy-Cz [ + Socks5 ] """))
+    print(colored.red("""[99] - [+] Exit """))
 
 
+
+## İnformation ##
 class İnformation():
     def __init__(self,address):
         self.address = address
@@ -63,10 +84,31 @@ class İnformation():
         return response.text
 
 
-
+# Proxy Request ##
 def get_proxy_scrape():
     response = requests.get("https://api.proxyscrape.com/?request=displayproxies&proxytype=socks5&country=all")
     return response.text
+
+
+
+
+## Selenium Sub Domain - Waf Finder // 
+class Seleniumİnformation():
+    def __init__(self,address):
+        self.url = "https://www.nmmapper.com"
+        self.address = address
+        # self.driver = webdriver.Firefox(options=selenium_options,executable_path=driver_path)
+        self.driver = webdriver.Firefox(executable_path=driver_path)
+
+    def selenium_subdomain(self):
+        self.driver.get(f"{self.url}/sys/tools/subdomainfinder/")
+        time.sleep(1)
+        self.driver.find_element_by_xpath("//*[@id='Enumhost']").send_keys(f"{self.address}")
+        time.sleep(1)
+        self.driver.find_element_by_xpath("//*[@id='start-scan']").click()
+        time.sleep(2)
+        self.driver.close()
+
 
 
 
@@ -118,13 +160,18 @@ while True:
                 banner_proxy = proxy_banner.banner__proxy()
                 proxy_options = options_proxy()
                 proxy = input("Enter Options Proxy : ")
-                if proxy == "1":
-                    scrape_proxy = get_proxy_scrape()
-                    f = open("scrape-proxy.txt","w")
-                    f.write(scrape_proxy)
-                    f.close()
-                    print("Successfully")
-                    input("Press Enter Options")
+                if proxy == "99":
+                    break
+                else:
+                    if proxy == "1":
+                        scrape_proxy = get_proxy_scrape()
+                        f = open("scrape-proxy.txt","w")
+                        f.write(scrape_proxy)
+                        f.close()
+                        print("[+ Successfully Proxy ]")
+                        print("[+ Proxy Added Scrape-Proxy.txt ]")
+                        input("Press Enter Options")
+
 
             
             elif option == "06":
@@ -132,6 +179,14 @@ while True:
                 banner_layer_seven = layer_seven_banner.banner__layer_seven()
                 option = input("Enter İp Or Address : ")
 
+            
+            elif option == "07":
+                os.system("clear" if os.name == "nt" "cls" else "clear")
+                option = input("Enter İP : ")
+                selenium_ = Seleniumİnformation(option)
+                selenium_.selenium_subdomain()
+                time.sleep(2)
+                input("Press Enter ")
     except KeyboardInterrupt:
         sys.exit()
     except Exception as ex:
