@@ -110,6 +110,15 @@ class Seleniumİnformation():
         time.sleep(2)
         self.driver.close()
 
+    def selenium_wafchecker(self):
+        self.driver.get(f"{self.url}/tools/reconnaissance-tools/waf/web-application-firewall-detector/")
+        time.sleep(1)
+        self.driver.find_element_by_xpath("//*[@id='ep-wafdetector']").send_keys(f"{self.address}")
+        time.sleep(1)
+        self.driver.find_element_by_xpath("//*[@id='start-scan']").click()
+        time.sleep(7)
+        self.driver.close()
+
 
 
 
@@ -188,6 +197,16 @@ while True:
                 selenium_.selenium_subdomain()
                 time.sleep(2)
                 input("Press Enter ")
+
+            elif option == "08":
+                os.system("clear" if os.name == "nt" "cls" else "clear")
+                option = input("Enter İp Or Address [ + http / https ]  : ")
+                print(colored.green("""[ + Please Wait 10 Second Loading .... ]"""))
+                selenium_waf = Seleniumİnformation(option)
+                selenium_waf.selenium_wafchecker()
+                time.sleep(2)
+                input("Press Enter ")
+
     except KeyboardInterrupt:
         sys.exit()
     except Exception as ex:
