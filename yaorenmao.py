@@ -17,7 +17,7 @@ from selenium.webdriver.firefox.options import Options
 ## Selenium Clientless Options
 # selenium_options =   Options()
 # selenium_options.headless = True
-driver_path = "/opt/Yaorenmao/geckodriver"
+driver_path = "/opt/YaorenMao/geckodriver"
 
 ## Banners import 
 from Banners import start_banner
