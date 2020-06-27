@@ -149,7 +149,7 @@ class SocialMedia():
     def facebook(self):
         response = requests.get(f"https://www.facebook.com/{self.address}")
         if response.status_code == 200:
-            return sys.stdout.write(str(colored.yellow(f"[+] https://www.facebook.com/{self.address}")))
+            return sys.stdout.write(str(colored.yellow(f"\n[+] https://www.facebook.com/{self.address}")))
             return sys.stdout.flush()
         else:
             return sys.stdout.write(str(colored.red(f"\n[-] https://www.facebook.com/{self.address}")))
@@ -182,6 +182,17 @@ class SocialMedia():
             return sys.stdout.flush()
         else:
             return sys.stdout.write(str(colored.red(f"\n[-] https://www.twitter.com/{self.address}")))
+            return sys.stdout.flush()
+
+
+
+    def youtube(self):
+        response = requests.get("https://www.youtube.com/user/")
+        if response.status_code == 200:
+            return sys.stdout.write(colored.yellow(f"\n[+] https://www.youtube.com/user/{self.address}"))
+            return sys.stdout.flush()
+        else:
+            return sys.stdout.write(colored.red(f"\n[-] https://www.youtube.com/user/{self.address}"))
             return sys.stdout.flush()
 
 
@@ -345,6 +356,7 @@ while True:
                 social_start.instagram()
                 social_start.github()
                 social_start.twitter()
+                social_start.youtube()
                 input("\nPress Enter ")
 
 
