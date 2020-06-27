@@ -59,6 +59,8 @@ def options():
 def options_proxy():
     print(colored.red("""[1]  - [+] ProxyScrape Website [ + Socks5 ] """))
     print(colored.red("""[2]  - [+] Proxy-List Website [ + Socks5 ] """))
+    print(colored.red("""[3]  - [+] ProxyScrape Website [ + Socks4 ] """))
+    print(colored.red("""[4]  - [+] Proxy-List Website [ + Socks4 ] """))
     print(colored.red("""[99] - [+] Exit """))
 
 
@@ -85,7 +87,7 @@ class İnformation():
         return response.text
 
 
-# Proxy Request ##
+#################### Proxy Request Started ####################
 def get_proxy_scrape():
     response = requests.get("https://api.proxyscrape.com/?request=displayproxies&proxytype=socks5&country=all")
     return response.text
@@ -93,6 +95,16 @@ def get_proxy_scrape():
 def get_proxy_proxy_list():
     response = requests.get("https://www.proxy-list.download/api/v1/get?type=socks5")
     return response.text
+
+def get_proxy_scrape_socks4():
+    response = requests.get("https://api.proxyscrape.com/?request=displayproxies&proxytype=socks4&country=all")
+    return response.text
+
+def get_proxy_proxy_list_socks4():
+    response = requests.get("https://www.proxy-list.download/api/v1/get?type=socks4")
+    return response.text
+
+#################### Proxy Finished ###########################
 
 
 ## Selenium Sub Domain - Waf Finder // 
@@ -182,7 +194,7 @@ while True:
                         try:
                             scrape_proxy = get_proxy_scrape()
                             f.write(scrape_proxy)
-                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-Proxy.txt ]")))
+                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-proxy-socks5.txt ]")))
                             sys.stdout.flush()
                             f.close()
                             input("\nPress Enter Options")
@@ -210,7 +222,41 @@ while True:
                             sys.stdout.flush()
                             print(ex)
                             sys.exit()
-    
+
+                    elif proxy == "3":
+                        f = open("scrape-proxy-socks4.txt","w")
+                        try:
+                            scrape_proxy_socks4 = get_proxy_scrape_socks4()
+                            f.write(scrape_proxy)
+                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-Proxy-socks4.txt ]")))
+                            sys.stdout.flush()
+                            f.close()
+                            input("\nPress Enter Options")
+
+                        except Exception as ex:
+                            f.close()
+                            sys.stdout.write(str(colored.green("[ + Website !!! Not Found ]")))
+                            sys.stdout.flush()
+                            print(ex)
+                            sys.exit()
+
+
+                    elif proxy == "4":
+                        f = open("proxy-list-web-socks4-txt","w")
+                        try:
+                            proxy_list_web_socks4 = get_proxy_proxy_list_socks4()
+                            f.write(proxy_list_web)
+                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added proxy-list-web-socks4-txt ]")))
+                            sys.stdout.flush()
+                            f.close()
+                            input("\nPress Enter Options")
+                        
+                        except Exception as ex:
+                            f.close()
+                            sys.stdout.write(str(colored.green("[ + Website !!! Not Found ]")))
+                            sys.stdout.flush()
+                            print(ex)
+                            sys.exit()
 
 
             
