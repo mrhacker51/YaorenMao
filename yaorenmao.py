@@ -228,7 +228,7 @@ while True:
                         try:
                             scrape_proxy_socks4 = get_proxy_scrape_socks4()
                             f.write(scrape_proxy)
-                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-Proxy-socks4.txt ]")))
+                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-proxy-socks4.txt ]")))
                             sys.stdout.flush()
                             f.close()
                             input("\nPress Enter Options")
