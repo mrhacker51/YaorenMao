@@ -108,8 +108,13 @@ class Seleniumİnformation():
         time.sleep(1)
         self.driver.find_element_by_xpath("//*[@id='start-scan']").click()
         time.sleep(2)
-        self.driver.close()
 
+        subdomain_scanner = self.driver.find_elements_by_id("subdomain-tbody")
+
+        for subdomains in subdomain_scanner:
+            print(colored.red("[ + HOST ]") + " " + colored.yellow("[ + SubDomain ]") + " " + colored.green("[ + IP ]") + " " + colored.magenta("[ + ASN ]"))
+            print(subdomains.text)
+      
     def selenium_wafchecker(self):
         self.driver.get(f"{self.url}/tools/reconnaissance-tools/waf/web-application-firewall-detector/")
         time.sleep(1)
@@ -118,9 +123,6 @@ class Seleniumİnformation():
         self.driver.find_element_by_xpath("//*[@id='start-scan']").click()
         time.sleep(7)
         self.driver.close()
-
-
-
 
 
 while True:
