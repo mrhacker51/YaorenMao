@@ -57,8 +57,8 @@ def options():
 
 ## Proxy Menü Options : 
 def options_proxy():
-    print(colored.red("""[1] - [+] ProxyScrape Website All """))
-    print(colored.red("""[2] - [+] Free-Proxy-Cz [ + Socks5 ] """))
+    print(colored.red("""[1]  - [+] ProxyScrape Website [ + Socks5 ] """))
+    print(colored.red("""[2]  - [+] Proxy-List Website [ + Socks5 ] """))
     print(colored.red("""[99] - [+] Exit """))
 
 
@@ -90,7 +90,9 @@ def get_proxy_scrape():
     response = requests.get("https://api.proxyscrape.com/?request=displayproxies&proxytype=socks5&country=all")
     return response.text
 
-
+def get_proxy_proxy_list():
+    response = requests.get("https://www.proxy-list.download/api/v1/get?type=socks5")
+    return response.text
 
 
 ## Selenium Sub Domain - Waf Finder // 
@@ -176,13 +178,39 @@ while True:
                     break
                 else:
                     if proxy == "1":
-                        scrape_proxy = get_proxy_scrape()
-                        f = open("scrape-proxy.txt","w")
-                        f.write(scrape_proxy)
-                        f.close()
-                        print("[+ Successfully Proxy ]")
-                        print("[+ Proxy Added Scrape-Proxy.txt ]")
-                        input("Press Enter Options")
+                        f = open("scrape-proxy-socks5.txt","w")
+                        try:
+                            scrape_proxy = get_proxy_scrape()
+                            f.write(scrape_proxy)
+                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-Proxy.txt ]")))
+                            sys.stdout.flush()
+                            f.close()
+                            input("\nPress Enter Options")
+
+                        except Exception as ex:
+                            f.close()
+                            sys.stdout.write(str(colored.green("[ + Website !!! Not Found ]")))
+                            sys.stdout.flush()
+                            print(ex)
+                            sys.exit()
+
+                    elif proxy == "2":
+                        f = open("proxy-list-web-socks5-txt","w")
+                        try:
+                            proxy_list_web = get_proxy_proxy_list()
+                            f.write(proxy_list_web)
+                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added proxy-list-web-socks5-txt ]")))
+                            sys.stdout.flush()
+                            f.close()
+                            input("\nPress Enter Options")
+                        
+                        except Exception as ex:
+                            f.close()
+                            sys.stdout.write(str(colored.green("[ + Website !!! Not Found ]")))
+                            sys.stdout.flush()
+                            print(ex)
+                            sys.exit()
+    
 
 
             
