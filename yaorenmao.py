@@ -51,6 +51,7 @@ def options():
     print(colored.red("""[06] - [+] Layer 7 Attack """))
     print(colored.red("""[07] - [+] SubDomain Finder """))
     print(colored.red("""[08] - [+] WAF Checker """))
+    print(colored.red("""[09] - [+] Social Media Finder """))
     print(colored.red("""[99] - [+] Exit """))
     print(colored.magenta(my_string.center(50,"-")))
 
@@ -137,6 +138,59 @@ class Seleniumİnformation():
         self.driver.find_element_by_xpath("//*[@id='start-scan']").click()
         time.sleep(7)
         self.driver.close()
+
+
+## Social Media Started ###
+
+class SocialMedia():
+    def __init__(self,address):
+        self.address = address
+
+    def facebook(self):
+        response = requests.get(f"https://www.facebook.com/{self.address}")
+        if response.status_code == 200:
+            return sys.stdout.write(str(colored.yellow(f"[+] https://www.facebook.com/{self.address}")))
+            return sys.stdout.flush()
+        else:
+            return sys.stdout.write(str(colored.red(f"\n[-] https://www.facebook.com/{self.address}")))
+            return sys.stdout.flush()
+
+    def instagram(self):
+        response = requests.get(f"https://www.instagram.com/{self.address}/")
+        if response.status_code == 200:
+            return sys.stdout.write(str(colored.yellow(f"\n[+] https://www.instagram.com/{self.address}")))
+            return sys.stdout.flush()
+        else:
+            return sys.stdout.write(str(colored.red(f"\n[-] https://www.instagram.com/{self.address}")))
+            return sys.stdout.flush()
+
+
+    def github(self):
+        response = requests.get(f"https://www.github.com/{self.address}/")
+        if response.status_code == 200:
+            return sys.stdout.write(str(colored.yellow(f"\n[+] https://www.github.com/{self.address}")))
+            return sys.stdout.flush()
+        else:
+            return sys.stdout.write(str(colored.red(f"\n[-] https://www.github.com/{self.address}")))
+            return sys.stdout.flush()
+
+
+    def twitter(self):
+        response = requests.get(f"https://www.twitter.com/{self.address}/")
+        if response.status_code == 200:
+            return sys.stdout.write(str(colored.yellow(f"\n[+] https://www.twitter.com/{self.address}")))
+            return sys.stdout.flush()
+        else:
+            return sys.stdout.write(str(colored.red(f"\n[-] https://www.twitter.com/{self.address}")))
+            return sys.stdout.flush()
+
+
+
+
+
+## Social Media Finished ###
+
+
 
 
 while True:
@@ -228,7 +282,7 @@ while True:
                         try:
                             scrape_proxy_socks4 = get_proxy_scrape_socks4()
                             f.write(scrape_proxy)
-                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-proxy-socks4.txt ]")))
+                            sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-Proxy-socks4.txt ]")))
                             sys.stdout.flush()
                             f.close()
                             input("\nPress Enter Options")
@@ -282,6 +336,17 @@ while True:
                 selenium_waf.selenium_wafchecker()
                 time.sleep(2)
                 input("Press Enter ")
+            
+            elif option == "09":
+                os.system("clear" if os.name == "nt" "cls" else "clear")
+                option = input("Enter Social Media Address : ")
+                social_start = SocialMedia(option)
+                social_start.facebook()
+                social_start.instagram()
+                social_start.github()
+                social_start.twitter()
+                input("\nPress Enter ")
+
 
     except KeyboardInterrupt:
         sys.exit()
