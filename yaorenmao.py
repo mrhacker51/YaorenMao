@@ -292,7 +292,7 @@ while True:
                         f = open("scrape-proxy-socks4.txt","w")
                         try:
                             scrape_proxy_socks4 = get_proxy_scrape_socks4()
-                            f.write(scrape_proxy)
+                            f.write(scrape_proxy_socks4)
                             sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added scrape-Proxy-socks4.txt ]")))
                             sys.stdout.flush()
                             f.close()
@@ -310,7 +310,7 @@ while True:
                         f = open("proxy-list-web-socks4-txt","w")
                         try:
                             proxy_list_web_socks4 = get_proxy_proxy_list_socks4()
-                            f.write(proxy_list_web)
+                            f.write(proxy_list_web_socks4)
                             sys.stdout.write(str(colored.blue("[+ Successfully Proxy ]\n[+ Proxy Added proxy-list-web-socks4-txt ]")))
                             sys.stdout.flush()
                             f.close()
