@@ -189,10 +189,10 @@ class SocialMedia():
     def youtube(self):
         response = requests.get("https://www.youtube.com/user/")
         if response.status_code == 200:
-            return sys.stdout.write(colored.yellow(f"\n[+] https://www.youtube.com/user/{self.address}"))
+            return sys.stdout.write(str(colored.yellow(f"\n[+] https://www.youtube.com/user/{self.address}")))
             return sys.stdout.flush()
         else:
-            return sys.stdout.write(colored.red(f"\n[-] https://www.youtube.com/user/{self.address}"))
+            return sys.stdout.write(str(colored.red(f"\n[-] https://www.youtube.com/user/{self.address}")))
             return sys.stdout.flush()
 
 
