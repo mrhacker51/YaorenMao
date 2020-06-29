@@ -23,9 +23,8 @@ def clear():
 
 
 ## Selenium Clientless Options
-# selenium_options =   Options()
-# selenium_options.headless = True
-
+selenium_options =   Options()
+selenium_options.headless = True
 driver_path = "/opt/YaorenMao/geckodriver"
 
 if not os.path.exists(driver_path):
@@ -122,8 +121,8 @@ class Seleniumİnformation():
     def __init__(self,address):
         self.url = "https://www.nmmapper.com"
         self.address = address
-        # self.driver = webdriver.Firefox(options=selenium_options,executable_path=driver_path)
-        self.driver = webdriver.Firefox(executable_path=driver_path)
+        self.driver = webdriver.Firefox(options=selenium_options,executable_path=driver_path)
+        #self.driver = webdriver.Firefox(executable_path=driver_path)
 
     def selenium_subdomain(self):
         self.driver.get(f"{self.url}/sys/tools/subdomainfinder/")
