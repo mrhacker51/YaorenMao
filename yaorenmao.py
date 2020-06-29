@@ -137,15 +137,29 @@ class Seleniumİnformation():
 
         for subdomains in subdomain_scanner:
             print(colored.red("[ + HOST ]") + " " + colored.yellow("[ + SubDomain ]") + " " + colored.green("[ + IP ]") + " " + colored.magenta("[ + ASN ]"))
-            print(subdomains.text)
-      
+            print(colored.green(subdomains.text))
+            time.sleep(1)
+        self.driver.close()
+
+
+
     def selenium_wafchecker(self):
         self.driver.get(f"{self.url}/tools/reconnaissance-tools/waf/web-application-firewall-detector/")
         time.sleep(1)
         self.driver.find_element_by_xpath("//*[@id='ep-wafdetector']").send_keys(f"{self.address}")
         time.sleep(1)
         self.driver.find_element_by_xpath("//*[@id='start-scan']").click()
-        time.sleep(7)
+
+        waf_scanner = self.driver.find_elements_by_xpath("//*[@id='wafdetector-tbody']")
+
+        for wafs in waf_scanner:
+            print(colored.red("[ + HOST ]") + " " + colored.yellow("\t[ + IP ]") + " " + colored.green("\t[ + WAF ]"))
+            time.sleep(8)
+            print(colored.green(wafs.text))
+
+            if not wafs.text:
+                print(colored.red("[-] Waf Not Found "))
+        time.sleep(3)
         self.driver.close()
 
 
@@ -218,7 +232,7 @@ while True:
             if option == "01":
                 clear()
                 banner_whois = whois_banner.banner__whois()
-                option = input("Enter İp Or Address : ")
+                option = input("Enter İp / Host : ")
                 whois_ = İnformation(option)
                 whois_ = whois_.whois_lookup()
                 print(whois_)
@@ -228,7 +242,7 @@ while True:
             elif option == "02":
                 clear()
                 banner_nameserver = nameserver_banner.banner__nameserver()
-                option = input("Enter İp Or Address : ")
+                option = input("Enter İp / Host : ")
                 nameserver_ = İnformation(option)
                 nameserver_ = nameserver_.nameserver_lookup()
                 print(nameserver_)
@@ -238,7 +252,7 @@ while True:
             elif option == "03":
                 clear()
                 banner_traceroute = tracert_banner.banner__traceroute()
-                option = input("Enter İp Or Address : ")
+                option = input("Enter İp / Host : ")
                 traceroute = İnformation(option)
                 traceroute = traceroute.traceroute_lookup()
                 print(traceroute)
@@ -331,12 +345,12 @@ while True:
             elif option == "06":
                 clear()
                 banner_layer_seven = layer_seven_banner.banner__layer_seven()
-                option = input("Enter İp Or Address : ")
+                option = input("Enter İp / Address : ")
 
             
             elif option == "07":
                 clear()
-                option = input("Enter İP : ")
+                option = input("Enter İp / Host : ")
                 selenium_ = Seleniumİnformation(option)
                 selenium_.selenium_subdomain()
                 time.sleep(2)
@@ -344,11 +358,10 @@ while True:
 
             elif option == "08":
                 clear()
-                option = input("Enter İp Or Address [ + http / https ]  : ")
+                option = input("Enter İp / Host [ + http / https ]  : ")
                 print(colored.green("""[ + Please Wait 10 Second Loading .... ]"""))
                 selenium_waf = Seleniumİnformation(option)
                 selenium_waf.selenium_wafchecker()
-                time.sleep(2)
                 input("Press Enter Options")
             
             elif option == "09":
