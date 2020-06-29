@@ -13,11 +13,27 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 
 
+# Clear System Function
+
+def clear():
+    os.system("clear" if os.name == "nt" "cls" else "clear")
+
+## Clear System Function
+
+
 
 ## Selenium Clientless Options
 # selenium_options =   Options()
 # selenium_options.headless = True
+
 driver_path = "/opt/YaorenMao/geckodriver"
+
+if not os.path.exists(driver_path):
+    sys.stdout.write(str(colored.red("\n[+] Please put the tool in [Opt Folder]\n")))
+    sys.stdout.flush()
+    sys.exit()
+else:
+    pass
 
 ## Banners import 
 from Banners import start_banner
@@ -213,41 +229,41 @@ while True:
             break
         else:
             if option == "01":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 banner_whois = whois_banner.banner__whois()
                 option = input("Enter İp Or Address : ")
                 whois_ = İnformation(option)
                 whois_ = whois_.whois_lookup()
                 print(whois_)
                 input("Press Enter Options")
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
 
             elif option == "02":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 banner_nameserver = nameserver_banner.banner__nameserver()
                 option = input("Enter İp Or Address : ")
                 nameserver_ = İnformation(option)
                 nameserver_ = nameserver_.nameserver_lookup()
                 print(nameserver_)
                 input("Press Enter Options")
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
 
             elif option == "03":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 banner_traceroute = tracert_banner.banner__traceroute()
                 option = input("Enter İp Or Address : ")
                 traceroute = İnformation(option)
                 traceroute = traceroute.traceroute_lookup()
                 print(traceroute)
                 input("Press Enter Options")
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
 
             elif option == "04":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 banner_fake_nmap =  fake_nmap_banner.banner__nmap()
 
             elif option == "05":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 banner_proxy = proxy_banner.banner__proxy()
                 proxy_options = options_proxy()
                 proxy = input("Enter Options Proxy : ")
@@ -326,13 +342,13 @@ while True:
 
             
             elif option == "06":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 banner_layer_seven = layer_seven_banner.banner__layer_seven()
                 option = input("Enter İp Or Address : ")
 
             
             elif option == "07":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 option = input("Enter İP : ")
                 selenium_ = Seleniumİnformation(option)
                 selenium_.selenium_subdomain()
@@ -340,7 +356,7 @@ while True:
                 input("Press Enter ")
 
             elif option == "08":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 option = input("Enter İp Or Address [ + http / https ]  : ")
                 print(colored.green("""[ + Please Wait 10 Second Loading .... ]"""))
                 selenium_waf = Seleniumİnformation(option)
@@ -349,7 +365,7 @@ while True:
                 input("Press Enter ")
             
             elif option == "09":
-                os.system("clear" if os.name == "nt" "cls" else "clear")
+                clear()
                 option = input("Enter Social Media Address : ")
                 social_start = SocialMedia(option)
                 social_start.facebook()
@@ -365,4 +381,3 @@ while True:
     except Exception as ex:
         print(ex)
         sys.exit()
-
