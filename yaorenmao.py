@@ -44,41 +44,34 @@ from Banners import fake_nmap_banner
 from Banners import proxy_banner
 from Banners import layer_seven_banner
 
-## All Banners İnformation
-# banner_started = start_banner.banner_one() ## Start Banner
-# banner_whois = whois_banner.banner__whois() ## Whois Banner
-# banner_nameserver = nameserver_banner.banner__nameserver() ## Nameserver Banner
-# banner_traceroute = tracert_banner.banner__traceroute() ## Traceroute Banner
-# banner_fake_nmap =  fake_nmap_banner.banner__nmap() ## Fake Nmap Scanner Banner
-# banner_proxy = proxy_banner.banner__proxy() ## Proxy Banner
-# banner_layer_seven = layer_seven_banner.banner__layer_seven() ## Layer 7 Banner
-
-
 
 ## Menü Options : 
 def options():
     my_string = ""
     print(colored.magenta(my_string.center(50,"-")))
-    print(colored.red("""[01] - [+] Whois Lookup """))
-    print(colored.red("""[02] - [+] NameServer Lookup """))
-    print(colored.red("""[03] - [+] Traceroute Lookup """))
-    print(colored.red("""[04] - [+] Fake Nmap İp & Mac Address Scanner Website """))
-    print(colored.red("""[05] - [+] Proxy Download """))
-    print(colored.red("""[06] - [+] Layer 7 Attack """))
-    print(colored.red("""[07] - [+] SubDomain Finder """))
-    print(colored.red("""[08] - [+] WAF Checker """))
-    print(colored.red("""[09] - [+] Social Media Finder """))
-    print(colored.red("""[99] - [+] Exit """))
+    print(colored.red("""[01] - [*] Whois Lookup """))
+    print(colored.red("""[02] - [*] NameServer Lookup """))
+    print(colored.red("""[03] - [*] Traceroute Lookup """))
+    print(colored.red("""[04] - [*] Fake Nmap İp & Mac Address Scanner Website """))
+    print(colored.red("""[05] - [*] Proxy Download """))
+    print(colored.red("""[06] - [*] Layer 7 Attack """))
+    print(colored.red("""[07] - [*] SubDomain Finder """))
+    print(colored.red("""[08] - [*] WAF Checker """))
+    print(colored.red("""[09] - [*] Social Media Finder """))
+    print(colored.red("""[99] - [*] Exit """))
     print(colored.magenta(my_string.center(50,"-")))
 
 
 ## Proxy Menü Options : 
 def options_proxy():
-    print(colored.red("""[1]  - [+] ProxyScrape Website [ + Socks5 ] """))
-    print(colored.red("""[2]  - [+] Proxy-List Website [ + Socks5 ] """))
-    print(colored.red("""[3]  - [+] ProxyScrape Website [ + Socks4 ] """))
-    print(colored.red("""[4]  - [+] Proxy-List Website [ + Socks4 ] """))
-    print(colored.red("""[99] - [+] Exit """))
+    my_string = ""
+    print(colored.magenta(my_string.center(50,"-")))
+    print(colored.red("""[1]  - [*] ProxyScrape Website [ + Socks5 ] """))
+    print(colored.red("""[2]  - [*] Proxy-List Website  [ + Socks5 ] """))
+    print(colored.red("""[3]  - [*] ProxyScrape Website [ + Socks4 ] """))
+    print(colored.red("""[4]  - [*] Proxy-List Website  [ + Socks4 ] """))
+    print(colored.red("""[99] - [*] Exit """))
+    print(colored.magenta(my_string.center(50,"-")))
 
 
 
@@ -211,13 +204,7 @@ class SocialMedia():
             return sys.stdout.write(str(colored.red(f"\n[-] https://www.youtube.com/user/{self.address}")))
             return sys.stdout.flush()
 
-
-
-
-
 ## Social Media Finished ###
-
-
 
 
 while True:
@@ -353,7 +340,7 @@ while True:
                 selenium_ = Seleniumİnformation(option)
                 selenium_.selenium_subdomain()
                 time.sleep(2)
-                input("Press Enter ")
+                input("Press Enter Options")
 
             elif option == "08":
                 clear()
@@ -362,7 +349,7 @@ while True:
                 selenium_waf = Seleniumİnformation(option)
                 selenium_waf.selenium_wafchecker()
                 time.sleep(2)
-                input("Press Enter ")
+                input("Press Enter Options")
             
             elif option == "09":
                 clear()
@@ -373,7 +360,7 @@ while True:
                 social_start.github()
                 social_start.twitter()
                 social_start.youtube()
-                input("\nPress Enter ")
+                input("\nPress Enter Options")
 
 
     except KeyboardInterrupt:
