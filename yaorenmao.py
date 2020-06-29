@@ -29,7 +29,7 @@ def clear():
 driver_path = "/opt/YaorenMao/geckodriver"
 
 if not os.path.exists(driver_path):
-    sys.stdout.write(str(colored.red("\n[+] Please put the tool in [Opt Folder]\n")))
+    sys.stdout.write(str(colored.red("\n[+] Please put the tool in [Opt Folder + Run Setup.sh ]\n")))
     sys.stdout.flush()
     sys.exit()
 else:
