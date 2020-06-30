@@ -26,8 +26,9 @@ def clear():
 selenium_options =   Options()
 selenium_options.headless = True
 driver_path = "/opt/YaorenMao/geckodriver"
+browser_path = "/opt/YaorenMao/firefox"
 
-if not os.path.exists(driver_path):
+if not os.path.exists(driver_path) or not os.path.exists(browser_path):
     sys.stdout.write(str(colored.red("\n[+] Please put the tool in [Opt Folder + Run Setup.sh ]\n")))
     sys.stdout.flush()
     sys.exit()
@@ -135,9 +136,14 @@ class Seleniumİnformation():
         subdomain_scanner = self.driver.find_elements_by_id("subdomain-tbody")
 
         for subdomains in subdomain_scanner:
-            print(colored.red("[ + HOST ]") + " " + colored.yellow("[ + SubDomain ]") + " " + colored.green("[ + IP ]") + " " + colored.magenta("[ + ASN ]"))
-            print(colored.green(subdomains.text))
-            time.sleep(1)
+            if "OOps nothing found" in subdomains.text:
+                sys.stdout.write(str(colored.red("[-] Sub Domain Not Found !")))
+                sys.stdout.flush()
+            else:
+                print(colored.red("[ + HOST ]") + " " + colored.yellow("[ + SubDomain ]") + " " + colored.green("[ + IP ]") + " " + colored.magenta("[ + ASN ]"))
+                print(colored.green(subdomains.text))
+                time.sleep(1)
+
         self.driver.close()
 
 
@@ -353,7 +359,7 @@ while True:
                 selenium_ = Seleniumİnformation(option)
                 selenium_.selenium_subdomain()
                 time.sleep(2)
-                input("Press Enter Options")
+                input("\nPress Enter Options")
 
             elif option == "08":
                 clear()
