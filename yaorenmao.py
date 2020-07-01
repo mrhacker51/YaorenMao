@@ -45,6 +45,7 @@ from Banners import proxy_banner
 from Banners import layer_seven_banner
 from Banners import waf_banner
 from Banners import subdomain_banner
+from Banners import social_banner
 
 """
 ________________________________
@@ -379,6 +380,7 @@ while True:
             
             elif option == "09":
                 clear()
+                banner_social = social_banner.banner__social()
                 option = input("Enter Social Media Address : ")
                 social_start = SocialMedia(option)
                 social_start.facebook()
