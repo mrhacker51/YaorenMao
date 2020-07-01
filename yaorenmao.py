@@ -72,11 +72,11 @@ def options():
 def options_proxy():
     my_string = ""
     print(colored.magenta(my_string.center(50,"▬")))
-    print(colored.red("""[1]  - [*] ProxyScrape Website [ + Socks5 ] """))
-    print(colored.red("""[2]  - [*] Proxy-List Website  [ + Socks5 ] """))
-    print(colored.red("""[3]  - [*] ProxyScrape Website [ + Socks4 ] """))
-    print(colored.red("""[4]  - [*] Proxy-List Website  [ + Socks4 ] """))
-    print(colored.red("""[99] - [*] Exit """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [1]  - [*] ProxyScrape Website [ + Socks5 ] """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [2]  - [*] Proxy-List Website  [ + Socks5 ] """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [3]  - [*] ProxyScrape Website [ + Socks4 ] """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [4]  - [*] Proxy-List Website  [ + Socks4 ] """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [99] - [*] Exit """))
     print(colored.magenta(my_string.center(50,"▬")))
 
 
