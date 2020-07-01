@@ -43,35 +43,41 @@ from Banners import tracert_banner
 from Banners import fake_nmap_banner
 from Banners import proxy_banner
 from Banners import layer_seven_banner
+from Banners import waf_banner
+from Banners import subdomain_banner
 
+"""
+________________________________
+____***_YAORENMAO TOOLS ***____
+"""
 
 ## Menü Options : 
 def options():
     my_string = ""
-    print(colored.magenta(my_string.center(50,"-")))
-    print(colored.red("""[01] - [*] Whois Lookup """))
-    print(colored.red("""[02] - [*] NameServer Lookup """))
-    print(colored.red("""[03] - [*] Traceroute Lookup """))
-    print(colored.red("""[04] - [*] Fake Nmap İp & Mac Address Scanner Website """))
-    print(colored.red("""[05] - [*] Proxy Download """))
-    print(colored.red("""[06] - [*] Layer 7 Attack """))
-    print(colored.red("""[07] - [*] SubDomain Finder """))
-    print(colored.red("""[08] - [*] WAF Checker """))
-    print(colored.red("""[09] - [*] Social Media Finder """))
-    print(colored.red("""[99] - [*] Exit """))
-    print(colored.magenta(my_string.center(50,"-")))
+    print(colored.magenta(my_string.center(50,"▬")))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [01] - [*] Whois Lookup """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [02] - [*] NameServer Lookup """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [03] - [*] Traceroute Lookup """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [04] - [*] Fake Nmap İp & Mac Address Scanner Website """))
+    print(colored.red("""\t▬▬▬▬▬▬▬▬ [05] - [*] Proxy Download """))
+    print(colored.blue("""\t▬▬▬▬▬▬▬▬ [06] - [*] Layer 7 Attack """))
+    print(colored.blue("""\t▬▬▬▬▬▬▬▬ [07] - [*] SubDomain Finder """))
+    print(colored.blue("""\t▬▬▬▬▬▬▬▬ [08] - [*] WAF Checker """))
+    print(colored.blue("""\t▬▬▬▬▬▬▬▬ [09] - [*] Social Media Finder """))
+    print(colored.blue("""\t▬▬▬▬▬▬▬▬ [99] - [*] Exit """))
+    print(colored.magenta(my_string.center(50,"▬")))
 
 
 ## Proxy Menü Options : 
 def options_proxy():
     my_string = ""
-    print(colored.magenta(my_string.center(50,"-")))
+    print(colored.magenta(my_string.center(50,"▬")))
     print(colored.red("""[1]  - [*] ProxyScrape Website [ + Socks5 ] """))
     print(colored.red("""[2]  - [*] Proxy-List Website  [ + Socks5 ] """))
     print(colored.red("""[3]  - [*] ProxyScrape Website [ + Socks4 ] """))
     print(colored.red("""[4]  - [*] Proxy-List Website  [ + Socks4 ] """))
     print(colored.red("""[99] - [*] Exit """))
-    print(colored.magenta(my_string.center(50,"-")))
+    print(colored.magenta(my_string.center(50,"▬")))
 
 
 
@@ -355,6 +361,7 @@ while True:
             
             elif option == "07":
                 clear()
+                banner_subdomain = subdomain_banner.banner__subdomain()
                 option = input("Enter İp / Host : ")
                 selenium_ = Seleniumİnformation(option)
                 selenium_.selenium_subdomain()
@@ -363,6 +370,7 @@ while True:
 
             elif option == "08":
                 clear()
+                banner_waf = waf_banner.banner__waf()
                 option = input("Enter İp / Host [ + http / https ]  : ")
                 print(colored.green("""[ + Please Wait 10 Second Loading .... ]"""))
                 selenium_waf = Seleniumİnformation(option)
