@@ -7,6 +7,9 @@ import os
 import time
 
 
+# Nmap Library
+import nmap3
+
 # Selenium Library
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -78,6 +81,19 @@ def options_proxy():
     print(colored.red("""\t▬▬▬▬▬▬▬▬ [3]  - [*] ProxyScrape Website [ + Socks4 ] """))
     print(colored.red("""\t▬▬▬▬▬▬▬▬ [4]  - [*] Proxy-List Website  [ + Socks4 ] """))
     print(colored.red("""\t▬▬▬▬▬▬▬▬ [99] - [*] Exit """))
+    print(colored.magenta(my_string.center(50,"▬")))
+
+
+def options_nmap():
+    my_string = ""
+    print(colored.magenta(my_string.center(50,"▬")))
+    print(colored.yellow("""\t▬▬▬▬▬▬▬▬ [1]  - [*] DNS BRUTE   """))
+    print(colored.yellow("""\t▬▬▬▬▬▬▬▬ [2]  - [*] TCP SCANNER """))
+    print(colored.yellow("""\t▬▬▬▬▬▬▬▬ [3]  - [*] UDP SCANNER """))
+    print(colored.yellow("""\t▬▬▬▬▬▬▬▬ [4]  - [*] PING        """))
+    print(colored.yellow("""\t▬▬▬▬▬▬▬▬ [5]  - [*] SUBNET SCANNER        """))
+    print(colored.yellow("""\t▬▬▬▬▬▬▬▬ [6]  - [*] FAKE IP SCANNER        """))
+    print(colored.yellow("""\t▬▬▬▬▬▬▬▬ [99] - [*] Exit        """))
     print(colored.magenta(my_string.center(50,"▬")))
 
 
@@ -175,6 +191,38 @@ class Seleniumİnformation():
         self.driver.close()
 
 
+## Nmap Started
+
+class NmapFunction():
+    def __init__(self,address):
+        self.address = address
+    
+    def dns_nmap(self):
+        nmap = nmap3.Nmap()
+        result = nmap.nmap_dns_brute_script(f"{self.address}")
+        print(colored.green("[ + ] HOST ") + "" + "\t" + "\t" + colored.blue("[ + ] IP "))
+        for i in result:
+            text = i["hostname"] + "\t" + i["address"]
+            print(text)
+
+    def tcp_scanner_nmap(self):
+        nmap = nmap3.NmapScanTechniques()
+        result = nmap.nmap_tcp_scan(f"{self.address}")
+
+    def udp_scanner_nmap(self):
+        result = nmap.nmap_tcp_scan(f"{self.address}")
+
+    def ping_nmap(self):
+        result = nmap.nmap_tcp_scan(f"{self.address}")
+
+    def subnet_scanner_nmap(self):
+        result = nmap.nmap_tcp_scan(f"{self.address}")
+
+    def fake_scanner_nmap(self):
+        result = nmap.nmap_tcp_scan(f"{self.address}")
+
+
+
 ## Social Media Started ###
 
 class SocialMedia():
@@ -248,7 +296,7 @@ while True:
                 whois_ = İnformation(option)
                 whois_ = whois_.whois_lookup()
                 print(whois_)
-                input("Press Enter Options")
+                input("▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
                 clear()
 
             elif option == "02":
@@ -258,7 +306,7 @@ while True:
                 nameserver_ = İnformation(option)
                 nameserver_ = nameserver_.nameserver_lookup()
                 print(nameserver_)
-                input("Press Enter Options")
+                input("▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
                 clear()
 
             elif option == "03":
@@ -268,12 +316,31 @@ while True:
                 traceroute = İnformation(option)
                 traceroute = traceroute.traceroute_lookup()
                 print(traceroute)
-                input("Press Enter Options")
+                input("▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
                 clear()
 
             elif option == "04":
                 clear()
                 banner_fake_nmap =  fake_nmap_banner.banner__nmap()
+                nmap_options = options_nmap()
+                nmap = input("Enter Options Nmap : ")
+
+                if nmap == "99":
+                    break
+                else:
+                    if nmap == "1":
+                        option = input("Enter İp / Host : ")
+                        nmap_dns_brute = NmapFunction(option)
+                        nmap_dns_brute = nmap_dns_brute.dns_nmap()
+                        input("▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
+                        clear()
+                    elif nmap == "2":
+                        option = input("Enter İp / Host : ")
+                        nmap_arp = NmapFunction(option)
+                        nmap_arp = nmap_arp.tcp_scanner_nmap()
+                        input("▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
+                        clear()
+
 
             elif option == "05":
                 clear()
@@ -367,7 +434,7 @@ while True:
                 selenium_ = Seleniumİnformation(option)
                 selenium_.selenium_subdomain()
                 time.sleep(2)
-                input("\nPress Enter Options")
+                input("\n▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
 
             elif option == "08":
                 clear()
@@ -376,7 +443,7 @@ while True:
                 print(colored.green("""[ + Please Wait 10 Second Loading .... ]"""))
                 selenium_waf = Seleniumİnformation(option)
                 selenium_waf.selenium_wafchecker()
-                input("Press Enter Options")
+                input("\n▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
             
             elif option == "09":
                 clear()
@@ -388,7 +455,7 @@ while True:
                 social_start.github()
                 social_start.twitter()
                 social_start.youtube()
-                input("\nPress Enter Options")
+                input("\n▬▬▬▬▬▬▬▬ Press Enter Options ▬▬▬▬▬▬▬▬\n")
 
 
     except KeyboardInterrupt:
