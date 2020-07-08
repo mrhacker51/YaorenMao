@@ -30,6 +30,7 @@ pip install selenium
 pip3 install selenium
 pip3 install bs4
 pip3 install requests
+pip3 install python3-nmap
 
 wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
 tar -xvf geckodriver-v0.26.0-linux64.tar.gz
